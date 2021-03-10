@@ -18,7 +18,7 @@ print("Bot is starting...")
 async def on_ready():
 
     # Set bot status:
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="b! help"))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for >help"))
 
     print('\n\nLogged in as')
     print(bot.user.name)
