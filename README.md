@@ -1,4 +1,4 @@
 # BrainBot
- Bot Created for the Brain Games discord server
+ Bot Created for the Brain Games discord servers
 
 ### Bot in development
