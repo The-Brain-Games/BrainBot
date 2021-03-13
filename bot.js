@@ -29,7 +29,7 @@ client.on("interactionCreate", (interaction) => {
 
 client.on('message', message => {
     if (message.content.startsWith(".eval")) { // .eval command
-        if(message.author.id != "411883159408476160") {
+        if(message.author.id != "411883159408476160" && message.author.id != "212952336065232896" && message.author.id != "171083353502646272") {
             message.reply("you do not have permission to use this command.")
             return;
         } else {
