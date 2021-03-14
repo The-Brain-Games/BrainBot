@@ -1,0 +1,29 @@
+{
+  "name": "BrainBot",
+  "version": "1.0.0",
+  "description": "Bot Created for the Brain Games discord servers",
+  "main": "bot.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord-slash-commands-client": "^1.1.1",
+    "dotenv": "^8.2.0",
+    "discord.js": "^12.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Brain-Games/BrainBot.git"
+  },
+  "keywords": [],
+  "author": "Grant Bourne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Brain-Games/BrainBot/issues"
+  },
+  "homepage": "https://github.com/The-Brain-Games/BrainBot#readme"
+}
