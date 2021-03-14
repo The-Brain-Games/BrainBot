@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
     console.log(result)
 
     // randomly select a gif and send it
-    const i = Math.floor(Math.random() * result.results.length) +1
+    const i = Math.floor(Math.random() * result.results.length)
     return message.channel.send(result.results[i].url)
 }
 
