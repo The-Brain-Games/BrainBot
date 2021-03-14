@@ -1,12 +1,10 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const interactions = require("discord-slash-commands-client");
 const fs = require("fs");
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const TOKEN = process.env.TOKEN;
-client.interactions = new interactions.Client(TOKEN, "819262229668036618");
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -27,27 +25,7 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on('ready', () => {
-    console.info(`Logged in as ${client.user.tag}!`);
-    console.info("Creating interactive (slash) commands...")
-
-    // Create a new command that we can test
-    client.interactions
-        .createCommand({
-            name: "ping",
-            description: "ping pong",
-            guildID: "698145767780647042"
-        })
-        .then(console.info)
-        .catch(console.error);
-
-    console.log(`\nBootup complete for ${client.user.tag}.`)
-});
-
-client.on("interactionCreate", (interaction) => {
-    if (interaction.name === "ping") {
-        console.log("ping command run")
-        interaction.channel.send("pong");
-    }
+    console.info(`\nLogged in as ${client.user.tag}!\n`);
 });
 
 client.on('message', message => {
@@ -56,7 +34,7 @@ client.on('message', message => {
     if(message.channel.type === 'dm') return;
     // Common vars
     let content = message.content.split(" ");
-    let command = content[0];
+    let command = content[0].toLowerCase();
     let args = content.slice(1);
     let prefix = ">";
 

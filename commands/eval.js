@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     } else {
     var result = args.join(" ")
         let evaled = eval(result);
-        console.log(`${message.author.tag} running eval command:`)
+        console.warn(`${message.author.tag} running eval command:`)
         console.log(`Input: ${result}`)
         console.log(`Output: ${evaled}`)
 
