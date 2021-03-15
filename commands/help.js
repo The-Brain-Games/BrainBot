@@ -1,8 +1,10 @@
 const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args) => {
-    await message.delete()
-    return message.channel.send("Grant is a cool guy")
+  if (args[0] === "help")
+    return message.channel.send("I aint helping u lol")
+  else
+    return
 }
 
 //The command's name
