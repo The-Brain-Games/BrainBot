@@ -3,6 +3,8 @@ const fetch = require("node-fetch");
 const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args) => {
+  return; // just here because the code doesnt work yet
+
   // check if there are args
   if (! args) return;
 
