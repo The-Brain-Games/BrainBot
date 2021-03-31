@@ -7,5 +7,6 @@ module.exports.run = async (client, message, args) => {
 
 //The command's name
 module.exports.help = {
-  name: "nathan"
+  name: "nathan",
+  description: "hi."
 }

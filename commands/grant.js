@@ -7,5 +7,6 @@ module.exports.run = async (client, message, args) => {
 
 //The command's name
 module.exports.help = {
-  name: "grant"
+  name: "grant",
+  description: "who's the fairest of them all?"
 }

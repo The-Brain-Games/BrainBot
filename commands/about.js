@@ -16,5 +16,6 @@ module.exports.run = async (client, message, args) => {
 
 //The command's name
 module.exports.help = {
-  name: "about"
+  name: "about",
+  description: "Learn about Brain Games and who we are."
 }

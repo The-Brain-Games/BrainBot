@@ -25,5 +25,6 @@ module.exports.run = async (client, message, args) => {
 
 //name this whatever the command name is.
 module.exports.help = {
-  name: "eval"
+  name: "eval",
+  description: "Admin only command"
 }
