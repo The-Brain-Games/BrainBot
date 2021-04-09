@@ -3,6 +3,11 @@
 # BrainBot
  Bot Created for the Brain Games discord servers
 
+# Preflight Checklist:
+* Create a todo.json
+* Create a warns.json
+* Run `npm i`
+
 # TODO:
 * Add `braininfo` command (command to gather info about all the Brain Games servers combined)
 * Add command for admins to use to post global news to all the Brain Games servers
