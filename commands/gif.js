@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
   return; // just here because the code doesnt work yet
 
   // check if there are args
-  if (! args) return;
+  if (args.length > 1) return message.reply('please include keywords');
 
   // create the url
   let keywords = args.join(" ")
