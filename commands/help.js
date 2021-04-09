@@ -16,8 +16,12 @@ module.exports.run = async (client, message, args) => {
           value: 'Learn about Brain Games and our background' 
         },
         {
-          name: 'Google:',
+          name: 'google:',
           value: 'Get a google query'
+        },
+        {
+          name: 'todo:',
+          value: 'Set a list of todo tasks.'
         },
         { 
           name: '\u200B', 
