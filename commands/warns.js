@@ -28,6 +28,7 @@ module.exports.run = async (client, message, args) => {
 
     var startIndex = 1;
     var endIndex = 4;
+    if (endIndex > data.length) endIndex = data.length
     var pagenum = 1;
 
     if (args.length > 1) {
