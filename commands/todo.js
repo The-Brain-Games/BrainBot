@@ -39,10 +39,10 @@ module.exports.run = async (client, message, args) => {
         }
         
         // common vars & checks
-        if (args.length <= 0) return message.reply("please give a number input in the format: `$todo add <index>`.")
+        if (args.length <= 0) return message.reply("please give a number input in the format: `>todo add <index>`.")
 
         var tasknum = Number(args[1])-1
-        if (Number.isNaN(tasknum)) return message.reply("please give a number input in the format: `$todo add <index>`.")
+        if (Number.isNaN(tasknum)) return message.reply("please give a number input in the format: `>todo add <index>`.")
 
         var userTasks = db.getData(`/${uid}/`).tasks
         if (userTasks.length === 0) return message.reply("you have no active tasks.")
@@ -52,7 +52,7 @@ module.exports.run = async (client, message, args) => {
         try {
             userTasks.splice(tasknum, 1)
         } catch (err) {
-            return message.reply("that is not a valid index, check `$todo` for your list of tasks & their index's.")
+            return message.reply("that is not a valid index, check `>todo` for your list of tasks & their index's.")
         }
 
         // insert the task back into the db
