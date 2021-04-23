@@ -47,5 +47,6 @@ module.exports.run = async (client, message, args) => {
 
 //The command's name
 module.exports.help = {
-  name: "help"
+  name: "help",
+  description: "The command you just used 🆔."
 }

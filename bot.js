@@ -25,7 +25,11 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on('ready', () => {
-    console.info(`\nLogged in as ${client.user.tag}!\n`);
+  console.info(`\nLogged in as ${client.user.tag}!\n`);
+
+  client.user.setPresence({ activity: { name: 'Brain Games' }, status: 'online' })
+    .then(console.log)
+    .catch(console.error);
 });
 
 client.on('message', message => {
