@@ -13,5 +13,5 @@ module.exports.run = async (client, message, args) => {
 //The command's name
 module.exports.help = {
   name: "broadcast",
-  description: "Admin only command"
+  description: "Admin only command to broadcast messages to servers"
 }
