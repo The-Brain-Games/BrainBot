@@ -11,8 +11,12 @@ module.exports.run = async (client, message, args) => {
     //const BrainCraft = client.channels.cache.find(channel => channel.id === "804470933514879026");
     //const BrainNG = client.channels.cache.find(channel => channel.id === "789660320540393482");
 
-    const BrainCraft = client.channels.cache.get("804470933514879026");
-    const BrainNG = client.channels.cache.get("789660320540393482");
+    try {
+        const BrainCraft = client.channels.cache.get("804470933514879026");
+        const BrainNG = client.channels.cache.get("789660320540393482");
+    } catch (err) {
+        return console.error(`Error finding broadcast channels: ${err}`)
+    }
 
     const broadcast_message = args.join(' ');
     
