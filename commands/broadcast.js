@@ -8,6 +8,9 @@ module.exports.run = async (client, message, args) => {
         console.warn(`${message.author.tag} is broadcasting.`)
         return message.reply(args.join(" "));
     }
+
+    const BrainCraft = client.channels.cache.find(channel => channel.id === "804470933514879026")
+    const BrainNG = client.channels.cache.find(channel => channel.id === "789660320540393482")
 }
 
 //The command's name
