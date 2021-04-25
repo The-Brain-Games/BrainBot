@@ -2,26 +2,36 @@ const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args) => {
     if(message.author.id != "411883159408476160" && message.author.id != "171083353502646272") {
-        message.reply("you do not have permission to use this command.")
-        return;
+        return message.reply("you do not have permission to use this command.");
     } else {
         console.warn(`${message.author.tag} is broadcasting.`)
     }
 
-    //const BrainCraft = client.channels.cache.find(channel => channel.id === "804470933514879026");
-    //const BrainNG = client.channels.cache.find(channel => channel.id === "789660320540393482");
+    // outdated way:
+    //const brainCraft = client.channels.cache.find(channel => channel.id === "804470933514879026");
+    //const brainNG = client.channels.cache.find(channel => channel.id === "789660320540393482");
 
+    //For testing
+    //var testing;
+    var brainCraft;
+    var brainNG;
     try {
-        const BrainCraft = client.channels.cache.get("804470933514879026");
-        const BrainNG = client.channels.cache.get("789660320540393482");
+        //For testing:
+        //testing = client.channels.cache.get("796788504569839666");
+
+        brainCraft = client.channels.cache.get("804470933514879026");
+        brainNG = client.channels.cache.get("789660320540393482");
     } catch (err) {
         return console.error(`Error finding broadcast channels: ${err}`)
     }
 
     const broadcast_message = args.join(' ');
     
-    BrainCraft.send(broadcast_message);
-    BrainNG.send(broadcast_message);    
+    //For testing:
+    //testing.send(broadcast_message);
+
+    brainCraft.send(broadcast_message);
+    brainNG.send(broadcast_message);    
 }
 
 //The command's name
