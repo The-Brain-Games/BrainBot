@@ -6,11 +6,18 @@ module.exports.run = async (client, message, args) => {
         return;
     } else {
         console.warn(`${message.author.tag} is broadcasting.`)
-        return message.reply(args.join(" "));
     }
 
-    const BrainCraft = client.channels.cache.find(channel => channel.id === "804470933514879026")
-    const BrainNG = client.channels.cache.find(channel => channel.id === "789660320540393482")
+    //const BrainCraft = client.channels.cache.find(channel => channel.id === "804470933514879026");
+    //const BrainNG = client.channels.cache.find(channel => channel.id === "789660320540393482");
+
+    const BrainCraft = client.channels.cache.get("804470933514879026");
+    const BrainNG = client.channels.cache.get("789660320540393482");
+
+    const broadcast_message = args.join(' ');
+    
+    BrainCraft.send(broadcast_message);
+    BrainNG.send(broadcast_message);    
 }
 
 //The command's name
