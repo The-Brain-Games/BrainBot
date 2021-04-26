@@ -7,31 +7,25 @@ module.exports.run = async (client, message, args) => {
         console.warn(`${message.author.tag} is broadcasting.`)
     }
 
-    // outdated way:
-    //const brainCraft = client.channels.cache.find(channel => channel.id === "804470933514879026");
-    //const brainNG = client.channels.cache.find(channel => channel.id === "789660320540393482");
+    //For testing:
+    //serverIDs = [];
 
-    //For testing
-    //var testing;
-    var brainCraft;
-    var brainNG;
+    var serverIDs = ["804470933514879026", "789660320540393482"]; // this is the list of server channel ID's for sending to
+    var serverChannels = [];
     try {
-        //For testing:
-        //testing = client.channels.cache.get("796788504569839666");
-
-        brainCraft = client.channels.cache.get("804470933514879026");
-        brainNG = client.channels.cache.get("789660320540393482");
+        for (var i = 0; i < serverIDs.length; i++) {
+            serverChannels.append(client.channels.cache.get(serverIDs[i]));
+        }
     } catch (err) {
-        return console.error(`Error finding broadcast channels: ${err}`)
+        return console.error(`Error finding broadcast channels: ${err}`);
     }
 
     const broadcast_message = args.join(' ');
-    
-    //For testing:
-    //testing.send(broadcast_message);
 
-    brainCraft.send(broadcast_message);
-    brainNG.send(broadcast_message);
+    //send the message:
+    for (var i = 0; i < serverChannels.length; i++) {
+        serverChannels[i].send(broadcast_message);
+    }
 }
 
 //The command's name
