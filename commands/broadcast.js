@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
     //testing.send(broadcast_message);
 
     brainCraft.send(broadcast_message);
-    brainNG.send(broadcast_message);    
+    brainNG.send(broadcast_message);
 }
 
 //The command's name
