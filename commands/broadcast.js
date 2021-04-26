@@ -8,13 +8,13 @@ module.exports.run = async (client, message, args) => {
     }
 
     //For testing:
-    //serverIDs = [];
+    //var serverIDs = ["796788484714528818", "796788504569839666"];
 
     var serverIDs = ["804470933514879026", "789660320540393482"]; // this is the list of server channel ID's for sending to
     var serverChannels = [];
     try {
         for (var i = 0; i < serverIDs.length; i++) {
-            serverChannels.append(client.channels.cache.get(serverIDs[i]));
+            serverChannels.push(client.channels.cache.get(serverIDs[i]));
         }
     } catch (err) {
         return console.error(`Error finding broadcast channels: ${err}`);
