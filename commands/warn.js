@@ -41,7 +41,8 @@ module.exports.run = async (client, message, args) => {
             ]
         }, false);
 
-        return message.channel.send(`Warned ${user2warn} for \`${reason}\`.`)
+        await message.delete();
+        return message.channel.send(`Warned ${user2warn} for \`${reason}\`.`);
     }
 }
 
