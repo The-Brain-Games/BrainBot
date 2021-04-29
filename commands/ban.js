@@ -8,8 +8,6 @@ module.exports.run = async (client, message, args) => {
 
     if (user2ban.id === '411883159408476160') {
         messageResponse = 'You cannot ban my daddy. 😠';
-    } else if (user2ban.id === '718188351508971542') {
-        messageResponse = 'I would love to, but I can\'t. 😟';
     } else if (user2ban.id === '301969699258761216') {
         messageResponse = 'Grant is my daddy, therefore Techy is my grandpa, so no banning him!';
     } else if (user2ban === message.author) {
