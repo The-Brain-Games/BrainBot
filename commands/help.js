@@ -27,7 +27,6 @@ module.exports.run = async (client, message, args) => {
           name: '\u200B', 
           value: 'To get more information about a command, run `>help <command name>`.' 
         }
-
       )
   } else {
     try {
