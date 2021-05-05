@@ -47,5 +47,5 @@ module.exports.run = async (client, message, args) => {
 //The command's name
 module.exports.help = {
   name: "suggest",
-  description: "Make a suggestion to the mods of Brain Games. This can be whatever you want, server specific or not."
+  description: "Make a suggestion to the mods of Brain Games. This can be whatever you want, server specific or not.\nSuggestions are hidden from all normal Brain Games members."
 }
