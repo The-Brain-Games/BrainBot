@@ -12,6 +12,6 @@
 * ~~Make sure no commands are cap sensitive~~
 * ~~Add some fun gif commands.~~
 * ~~Add about us command.~~
-* Add `suggest` command
+* ~~Add `suggest` command~~
 * Add modrator `poll` command
 * ~~Add other fun commands (maybe ask around to see what people want me to add)~~
