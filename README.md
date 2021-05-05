@@ -13,4 +13,5 @@
 * ~~Add some fun gif commands.~~
 * ~~Add about us command.~~
 * Add `suggest` command
-* Add other fun commands (maybe ask around to see what people want me to add)
+* Add modrator `poll` command
+* ~~Add other fun commands (maybe ask around to see what people want me to add)~~
