@@ -23,11 +23,14 @@ module.exports.run = async (client, message, args) => {
           name: 'todo:',
           value: 'Set a list of todo tasks.'
         },
+        {
+          name: 'suggest:',
+          value: 'Make a suggestion to the Brain Games mods.'
+        },
         { 
           name: '\u200B', 
           value: 'To get more information about a command, run `>help <command name>`.' 
         }
-
       )
   } else {
     try {
@@ -47,5 +50,6 @@ module.exports.run = async (client, message, args) => {
 
 //The command's name
 module.exports.help = {
-  name: "help"
+  name: "help",
+  description: "The command you just used 🆔."
 }

@@ -8,7 +8,7 @@ const { Config } = require('node-json-db/dist/lib/JsonDBConfig')
 module.exports.run = async (client, message, args) => {
     // general stuff
     const user4warn = message.mentions.users.first();
-    if (user4warn === undefined) return message.reply("mention a user, using the syntax `$warns <user> [page]`\nie: `$warns @StealthHydrac#8476 1`");
+    if (user4warn === undefined) return message.reply("mention a user, using the syntax `>warns <user> [page]`");
     uid = user4warn.id
 
     let warnsEmbed = new Discord.MessageEmbed()
@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
       .setTitle('Warns')
       .setDescription(`A list of infractions for user ${user4warn}.`)
       .setTimestamp()
-      .setFooter('Graphene Bot', 'https://i.imgur.com/UN5265k.jpg')
+      .setFooter('Brainbot', 'https://i.imgur.com/AkAd7Qo.png')
 
     // connect to db
     var db = new JsonDB(new Config("warns", true, true, '/'));
@@ -28,6 +28,7 @@ module.exports.run = async (client, message, args) => {
 
     var startIndex = 1;
     var endIndex = 4;
+    if (endIndex > data.length) endIndex = data.length
     var pagenum = 1;
 
     if (args.length > 1) {
