@@ -32,13 +32,12 @@ client.on('ready', () => {
     .catch(console.error);
 });
 
-var cooldown = false;
+const talkedRecently = new Set();
 client.on('message', message => {
   // General checks:
-  if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
+  if(message.author.bot || message.channel.type === 'dm') return;
 
-  if (cooldown == true) {
+  if (talkedRecently.has(message.author.id)) {
     //bot is on cooldown
     console.warn("Bot is on cooldown.")
     let cooldownEmbed = new Discord.MessageEmbed()
@@ -60,11 +59,12 @@ client.on('message', message => {
     // Checks if message contains a command and runs it
     let commandfile = client.commands.get(command.slice(prefix.length));
     if(commandfile) {
-      commandfile.run(client,message,args)
-      cooldown = true;
-      setTimeout(() => {
-        cooldown = false
-      }, 2000); //Timeout for 2 seconds
+      commandfile.run(client,message,args,prefix)
+      talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after 2 seconds
+          talkedRecently.delete(message.author.id);
+        }, 2000);
     } else {
       console.warn(`Command ${command.slice(prefix.length)} does not exist.`)
     }
