@@ -33,6 +33,7 @@ client.on('ready', () => {
 });
 
 const talkedRecently = new Set();
+let commandsRun = 0;
 client.on('message', message => {
   // General checks:
   if(message.author.bot || message.channel.type === 'dm') return;
@@ -59,16 +60,53 @@ client.on('message', message => {
     // Checks if message contains a command and runs it
     let commandfile = client.commands.get(command.slice(prefix.length));
     if(commandfile) {
-      commandfile.run(client,message,args,prefix)
-      talkedRecently.add(message.author.id);
-        setTimeout(() => {
-          // Removes the user from the set after 2 seconds
-          talkedRecently.delete(message.author.id);
-        }, 2000);
+      commandsRun++;
+      commandfile.run(client,message,args,prefix);
+      cooldown(message.author.id);
     } else {
+      if (command.slice(prefix.length) == "botstats") {
+        commandsRun++;
+        botstats(message);
+        cooldown(message.author.id);
+        return;
+      }
       console.warn(`Command ${command.slice(prefix.length)} does not exist.`)
     }
   }
 });
+
+
+
+//////////////////////////////////////////////BOTSTATS//////////////////////////////////////////////
+
+function botstats(message) {
+  const botstats = new Discord.MessageEmbed()
+    .setColor('#0a7014')
+    .setTitle('Bot Stats')
+    .addFields(
+      {
+        name: "Commands Run",
+        value: commandsRun
+      },
+      {
+        name: "Uptime",
+        value: moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]")
+      }
+    )
+    .setTimestamp()
+    .setFooter('Minecraft DownDetector', 'https://i.imgur.com/wSTFkRM.png');
+
+  return message.channel.send(botstats);
+}
+
+//////////////////////////////////////////////COOLDOWN//////////////////////////////////////////////
+
+function cooldown(user) {
+  talkedRecently.add(user);
+  setTimeout(() => {
+    // Removes the user from the set after 2 seconds
+    talkedRecently.delete(user);
+  }, 2000);
+}
 
 client.login(TOKEN);
