@@ -81,12 +81,16 @@ client.on('message', message => {
 
 function botstats(message) {
   const botstats = new Discord.MessageEmbed()
-    .setColor('#0a7014')
-    .setTitle('Bot Stats')
+    .setColor('#ba365b')
+    .setTitle('Bot Statistics')
     .addFields(
       {
         name: "Commands Run",
         value: commandsRun
+      },
+      {
+        name: "Current Command Count",
+        value: client.commands.array().length + 1
       },
       {
         name: "Uptime",
@@ -94,7 +98,7 @@ function botstats(message) {
       }
     )
     .setTimestamp()
-    .setFooter('Minecraft DownDetector', 'https://i.imgur.com/wSTFkRM.png');
+    .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png');
 
   return message.channel.send(botstats);
 }
