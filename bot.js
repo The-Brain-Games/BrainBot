@@ -49,7 +49,7 @@ client.on('message', message => {
   } else {
     // bot is not on cooldown, continue
     // Common vars
-    let content = message.content.split(" ");
+    let content = message.cleanContent.split(" ");
     let command = content[0].toLowerCase();
     //console.log(`running command ${command}`)
     let args = content.slice(1);
