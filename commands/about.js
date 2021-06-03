@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, disbut, message, args) => {
   const aboutEmbed = new Discord.MessageEmbed()
       .setColor('#ba365b')
       .setTitle('Click to learn about Brain Games')

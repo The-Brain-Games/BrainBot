@@ -5,7 +5,7 @@ var moment = require('moment')
 const { JsonDB } = require('node-json-db')
 const { Config } = require('node-json-db/dist/lib/JsonDBConfig')
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, disbut, message, args) => {
     // general stuff
     const user4warn = message.mentions.users.first();
     if (user4warn === undefined) return message.reply("mention a user, using the syntax `>warns <user> [page]`");

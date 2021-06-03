@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, disbut, message, args) => {
     const brainNG = client.guilds.get("804162605107249213");
     const brainCraft = client.guilds.get("789657841895735337");
 

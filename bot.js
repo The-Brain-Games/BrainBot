@@ -2,6 +2,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require("fs");
 const client = new Discord.Client();
+const disbut = require('discord-buttons')(client);
 client.commands = new Discord.Collection();
 
 const TOKEN = process.env.TOKEN;
@@ -61,7 +62,7 @@ client.on('message', message => {
     let commandfile = client.commands.get(command.slice(prefix.length));
     if(commandfile) {
       commandsRun++;
-      commandfile.run(client,message,args,prefix);
+      commandfile.run(client,disbut,message,args);
       cooldown(message.author.id);
     } else {
       if (command.slice(prefix.length) == "botstats") {

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, disbut, message, args) => {
     var suggestion = args.join(" ");
     if (suggestion === '') return message.reply("please include context to your suggestion.");
     if (suggestion.length > 1000) return message.reply("please shorten your suggestion. It can be maximum 1000 charicters.");
