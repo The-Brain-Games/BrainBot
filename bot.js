@@ -1,8 +1,10 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require("fs");
+var moment = require('moment')
+require("moment-duration-format");
 const client = new Discord.Client();
-const disbut = require('discord-buttons')(client);
+const disbut = require('discord-buttons');
 client.commands = new Discord.Collection();
 
 const TOKEN = process.env.TOKEN;
@@ -115,3 +117,4 @@ function cooldown(user) {
 }
 
 client.login(TOKEN);
+disbut(client);
