@@ -10,8 +10,16 @@ module.exports.run = async (client, disbut, message, args) => {
         )
       .setTimestamp()
       .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png');
+  
+  let button = new disbut.MessageButton()
+    .setLabel("Read More!")
+    .setStyle("url")
+    .setURL("https://realbraingames.com/#/about-us")
 
-  return message.channel.send(aboutEmbed);
+  return message.channel.send({
+    component: button,
+    embed: aboutEmbed
+  });
 }
 
 //The command's name
