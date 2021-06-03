@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, disbut, message, args) => {
     // general stuff
     var messageResponse = 'ERROR';
     const user2ban = message.mentions.users.first();
@@ -17,8 +17,9 @@ module.exports.run = async (client, message, args) => {
         if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("You don't have perms! haha");
 
         try {
-        user2ban.ban();
+            user2ban.ban();
         } catch (err) {
+            console.error(`Ban ERROR: ${err}`)
             return message.reply('I don\'t have permission to ban that user. 😟')
         }
         messageResponse = `I have banned ${user2ban.username}`;

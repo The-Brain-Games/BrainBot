@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, disbut, message, args) => {
     if(message.author.id != "411883159408476160" && message.author.id != "171083353502646272") {
         return message.reply("you do not have permission to use this command.");
     } else {

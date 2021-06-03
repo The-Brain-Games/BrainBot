@@ -4,7 +4,7 @@ var fs = require('fs')
 const { JsonDB } = require('node-json-db')
 const { Config } = require('node-json-db/dist/lib/JsonDBConfig')
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, disbut, message, args) => {
     var db = new JsonDB(new Config("todo", true, true, '/'));
     var data = db.getData("/")
 

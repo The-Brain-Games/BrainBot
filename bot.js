@@ -1,7 +1,10 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require("fs");
+var moment = require('moment')
+require("moment-duration-format");
 const client = new Discord.Client();
+const disbut = require('discord-buttons');
 client.commands = new Discord.Collection();
 
 const TOKEN = process.env.TOKEN;
@@ -32,13 +35,13 @@ client.on('ready', () => {
     .catch(console.error);
 });
 
-var cooldown = false;
+const talkedRecently = new Set();
+let commandsRun = 0;
 client.on('message', message => {
   // General checks:
-  if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
+  if(message.author.bot || message.channel.type === 'dm') return;
 
-  if (cooldown == true) {
+  if (talkedRecently.has(message.author.id)) {
     //bot is on cooldown
     console.warn("Bot is on cooldown.")
     let cooldownEmbed = new Discord.MessageEmbed()
@@ -49,7 +52,7 @@ client.on('message', message => {
   } else {
     // bot is not on cooldown, continue
     // Common vars
-    let content = message.content.split(" ");
+    let content = message.cleanContent.split(" ");
     let command = content[0].toLowerCase();
     //console.log(`running command ${command}`)
     let args = content.slice(1);
@@ -60,15 +63,58 @@ client.on('message', message => {
     // Checks if message contains a command and runs it
     let commandfile = client.commands.get(command.slice(prefix.length));
     if(commandfile) {
-      commandfile.run(client,message,args)
-      cooldown = true;
-      setTimeout(() => {
-        cooldown = false
-      }, 2000); //Timeout for 2 seconds
+      commandsRun++;
+      commandfile.run(client,disbut,message,args);
+      cooldown(message.author.id);
     } else {
+      if (command.slice(prefix.length) == "botstats") {
+        commandsRun++;
+        botstats(message);
+        cooldown(message.author.id);
+        return;
+      }
       console.warn(`Command ${command.slice(prefix.length)} does not exist.`)
     }
   }
 });
 
+
+
+//////////////////////////////////////////////BOTSTATS//////////////////////////////////////////////
+
+function botstats(message) {
+  const botstats = new Discord.MessageEmbed()
+    .setColor('#ba365b')
+    .setTitle('Bot Statistics')
+    .addFields(
+      {
+        name: "Commands Run",
+        value: commandsRun
+      },
+      {
+        name: "Current Command Count",
+        value: client.commands.array().length + 1
+      },
+      {
+        name: "Uptime",
+        value: moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]")
+      }
+    )
+    .setTimestamp()
+    .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png');
+
+  return message.channel.send(botstats);
+}
+
+//////////////////////////////////////////////COOLDOWN//////////////////////////////////////////////
+
+function cooldown(user) {
+  talkedRecently.add(user);
+  setTimeout(() => {
+    // Removes the user from the set after 2 seconds
+    talkedRecently.delete(user);
+  }, 2000);
+}
+
 client.login(TOKEN);
+disbut(client);
