@@ -32,7 +32,7 @@ module.exports.run = async (client, disbut, message, args) => {
 
     
     client.channels.cache
-        .get("825457139467550801")
+        .get("850112602989133844")
         .send(suggestEmbed);
 
 
