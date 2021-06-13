@@ -14,8 +14,17 @@ module.exports.run = async (client, disbut, message, args) => {
     .setStyle("url")
     .setURL("https://realbraingames.com/#/about-us")
 
+  let button2 = new disbut.MessageButton()
+    .setLabel("Donate")
+    .setStyle("url")
+    .setURL("https://www.patreon.com/thebraingames")
+
+  let buttonRow = new disbut.MessageActionRow()
+    .addComponent(button)
+    .addComponent(button2)
+
   return message.channel.send({
-    component: button,
+    component: buttonRow,
     embed: aboutEmbed
   });
 }
