@@ -21,8 +21,13 @@ module.exports.run = async (client, disbut, message, args) => {
                     inline: true
                 },
                 {
-                    name: "Players",
+                    name: "Players:",
                     value: `${response.onlinePlayers} / ${response.maxPlayers}`,
+                    inline: true
+                },
+                {
+                    name: "Ping:",
+                    value: response.roundTripLatency,
                     inline: true
                 }
             );
@@ -41,7 +46,15 @@ module.exports.run = async (client, disbut, message, args) => {
             mc_embed.setDescription("⛔ SERVER IS OFFLINE ⛔");
         });
 
-    message.channel.send(mc_embed);
+    let button = new disbut.MessageButton()
+        .setLabel("Dynmap")
+        .setStyle("url")
+        .setURL("http://mc.realbraingames.com:8123/")
+
+    message.channel.send({
+        component: button,
+        embed: mc_embed
+    });
     message.channel.stopTyping();
 }
 
