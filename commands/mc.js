@@ -10,7 +10,7 @@ module.exports.run = async (client, disbut, message, args) => {
       .setTimestamp()
       .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
 
-    await util.status("mc.meetandgeek.ca")
+    await util.status("172.16.1.52")
         .then((response) => {
             mc_embed.setDescription("🟢 Server is Online!");
 
@@ -21,8 +21,13 @@ module.exports.run = async (client, disbut, message, args) => {
                     inline: true
                 },
                 {
-                    name: "Players",
+                    name: "Players:",
                     value: `${response.onlinePlayers} / ${response.maxPlayers}`,
+                    inline: true
+                },
+                {
+                    name: "Ping:",
+                    value: response.roundTripLatency,
                     inline: true
                 }
             );
@@ -41,7 +46,15 @@ module.exports.run = async (client, disbut, message, args) => {
             mc_embed.setDescription("⛔ SERVER IS OFFLINE ⛔");
         });
 
-    message.channel.send(mc_embed);
+    let button = new disbut.MessageButton()
+        .setLabel("Dynmap")
+        .setStyle("url")
+        .setURL("http://mc.realbraingames.com:8123/")
+
+    message.channel.send({
+        component: button,
+        embed: mc_embed
+    });
     message.channel.stopTyping();
 }
 
