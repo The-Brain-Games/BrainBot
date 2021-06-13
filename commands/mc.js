@@ -5,7 +5,6 @@ module.exports.run = async (client, disbut, message, args) => {
     message.channel.startTyping();
 
     let mc_embed = new Discord.MessageEmbed()
-      .setColor('#0a7014')
       .setTitle('BrainCraft Status:')
       .setTimestamp()
       .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
@@ -40,10 +39,15 @@ module.exports.run = async (client, disbut, message, args) => {
 
                 mc_embed.addField("Players List:", playerList.join("\n"));
             }
+
+            mc_embed.setColor('#0a7014');
         })
         .catch((error) => {
             console.error(error);
-            mc_embed.setDescription("⛔ SERVER IS OFFLINE ⛔");
+            
+            mc_embed
+                .setDescription("⛔ SERVER IS OFFLINE ⛔")
+                .setColor('#8f0707');
         });
 
     let button = new disbut.MessageButton()
