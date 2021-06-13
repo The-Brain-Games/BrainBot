@@ -26,8 +26,8 @@ module.exports.run = async (client, disbut, message, args) => {
                     inline: true
                 },
                 {
-                    name: "Ping:",
-                    value: response.roundTripLatency,
+                    name: "Latency:",
+                    value: `${response.roundTripLatency}ms`,
                     inline: true
                 }
             );
