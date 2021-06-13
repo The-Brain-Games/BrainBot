@@ -10,7 +10,7 @@ module.exports.run = async (client, disbut, message, args) => {
       .setTimestamp()
       .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
 
-    await util.status("mc.meetandgeek.ca")
+    await util.status("172.16.1.50")
         .then((response) => {
             mc_embed.setDescription("🟢 Server is Online!");
 
