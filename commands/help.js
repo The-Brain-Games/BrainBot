@@ -13,11 +13,15 @@ module.exports.run = async (client, disbut, message, args) => {
     helpEmbed.addFields(
         { 
           name: 'about:', 
-          value: 'Learn about Brain Games and our background' 
+          value: 'Learn about Brain Games and our background.' 
+        },
+        {
+          name: 'mc',
+          value: 'Returns info about the status of the BrainCraft Minecraft server. Also gives a link to the dynmap.'
         },
         {
           name: 'google:',
-          value: 'Get a google query'
+          value: 'Get a google query.'
         },
         {
           name: 'todo:',
