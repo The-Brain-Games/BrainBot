@@ -67,7 +67,7 @@ module.exports.run = async (client, disbut, message, args) => {
       .setTimestamp()
       .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
 
-    await util.status("172.16.1.50:21544")
+    await util.status("172.16.1.50", { port: 21544, enableSRV: true, timeout: 5000, protocolVersion: 47 })
         .then((response) => {
             e_embed.setDescription("🟢 Modded server is Online!");
 
