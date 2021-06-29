@@ -60,7 +60,7 @@ module.exports.run = async (client, disbut, message, args) => {
         embed: mc_embed
     });
 
-
+    /*
     // events server:
     let e_embed = new Discord.MessageEmbed()
       .setTitle('BrainCraft Modded Status:')
@@ -109,7 +109,7 @@ module.exports.run = async (client, disbut, message, args) => {
         });
 
     message.channel.send(e_embed);
-
+    */
 
     message.channel.stopTyping();
 }
