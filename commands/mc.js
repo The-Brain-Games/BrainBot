@@ -62,6 +62,11 @@ module.exports.run = async (client, disbut, message, args) => {
 
 
     // events server:
+    let e_embed = new Discord.MessageEmbed()
+      .setTitle('BrainCraft Modded Status:')
+      .setTimestamp()
+      .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
+
     await util.status("172.16.1.50:21544")
         .then((response) => {
             e_embed.setDescription("🟢 Modded server is Online!");
