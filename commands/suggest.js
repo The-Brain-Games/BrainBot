@@ -18,11 +18,11 @@ module.exports.run = async (client, disbut, message, args) => {
                 value: `${message.author.tag} [${message.author.id}]`,
                 inline: true
             },
-            {
+            /*{
                 name: 'Server:',
                 value: `${message.guild.name} [${message.guild.id}]`,
                 inline: true
-            },
+            }*/
             {
                 name: 'Suggestion:',
                 value: suggestion,
