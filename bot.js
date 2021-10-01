@@ -122,8 +122,8 @@ client.on("messageDelete", function(messageDelete){
   }
   
   let deleteEmbed = new Discord.MessageEmbed()
-    .setColor('#a80f0f')
-    .setTitle('Message Deleted')
+  .setColor('#ba365b')
+  .setTitle('Message Deleted')
     .setTimestamp()
     .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
     .addFields(
@@ -142,7 +142,7 @@ client.on("messageDelete", function(messageDelete){
       );
 
   client.channels.cache
-    .get("836366149486641172")
+    .get("789829927515062282")
     .send(deleteEmbed);
 });
 
@@ -164,8 +164,8 @@ client.on('messageUpdate', function(oldMessage, newMessage){
   }
 
   let editEmbed = new Discord.MessageEmbed()
-    .setColor('#d9990f')
-    .setTitle('Message Deleted')
+    .setColor('#ba365b')
+    .setTitle('Message Edited')
     .setURL(`${newMessage.url}`)
     .setTimestamp()
     .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
@@ -189,24 +189,19 @@ client.on('messageUpdate', function(oldMessage, newMessage){
       );
 
   client.channels.cache
-    .get("836366149486641172")
+    .get("789829927515062282")
     .send(editEmbed);
 });
 
-client.on("guildMemberAdd", function(member){
+/*client.on("guildMemberAdd", function(member){
   console.info(`New member: ${member.tag}`);
 
-  var joinMessages = [
-      `Whalecum, ${member}!`,
-      `Com'on over and mine some Graphene, ${member}!`,
-      `Welcome to Graphene, ${member} ||we take bribes. At our patreon.||`, //TODO: add link to patreon
-      `Welcome ${member} this discord has great quotes, just like this one:\n> Come support our patreon and remeber, by paying us, you're just paying yourself!\n-- Techyguy 2021`
-    ]
+  var joinMessages = []
 
   client.channels.cache
-    .get("825457139467550801")
+    .get("789829927515062282")
     .send(joinMessages[Math.floor(Math.random() * joinMessages.length)]);
-});
+});*/
 
 //////////////////////////////////////////////COOLDOWN//////////////////////////////////////////////
 
