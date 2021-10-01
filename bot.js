@@ -15,8 +15,7 @@ fs.readdir("./commands/", (err, files) => {
   
     let jsfile = files.filter(f => f.split(".").pop() === "js");
     if(jsfile.length <= 0){
-      console.error("Couldn't find commands.");
-      return;
+      throw new Error("Couldn't find commands.");
     }
   
   jsfile.forEach((f, i) =>{
@@ -31,7 +30,7 @@ client.on('ready', () => {
   console.info(`\nLogged in as ${client.user.tag}!\n`);
 
   client.user.setPresence({ activity: { name: 'Brain Games' }, status: 'online' })
-    .then(console.log)
+    //.then(console.info)
     .catch(console.error);
 });
 
@@ -41,6 +40,7 @@ client.on('message', message => {
   // General checks:
   if(message.author.bot || message.channel.type === 'dm') return;
   if(message.content.toLowerCase() == "hi" || message.content.toLowerCase() == "hello") return message.channel.send("https://www.nohello.com/");
+  if(message.content == "!d bump") return message.react('❤');
 
   if (talkedRecently.has(message.author.id)) {
     //bot is on cooldown
@@ -82,6 +82,8 @@ client.on('message', message => {
 
 
 //////////////////////////////////////////////BOTSTATS//////////////////////////////////////////////
+
+
 
 function botstats(message) {
   const botstats = new Discord.MessageEmbed()
