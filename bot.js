@@ -107,6 +107,105 @@ function botstats(message) {
   return message.channel.send(botstats);
 }
 
+////////////////////////////////////////////////LOGS////////////////////////////////////////////////
+
+client.on("messageDelete", function(messageDelete){
+  if (messageDelete.bot || messageDelete.author.tag === "GitHub#0000" || messageDelete.author.tag === "Rythm#3722") return;
+
+  var messageText;
+  if (messageDelete.content.length > 800) {
+    messageText = `${messageDelete.content.substring(0, 800)}...`;
+  } else {
+    messageText = messageDelete.content;
+  }
+  
+  let deleteEmbed = new Discord.MessageEmbed()
+    .setColor('#a80f0f')
+    .setTitle('Message Deleted')
+    .setTimestamp()
+    .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
+    .addFields(
+        { 
+          name: 'Channel:', 
+          value: `${messageDelete.guild.channels.cache.get(`${messageDelete.channel.id}`).toString()}`
+        },
+        { 
+          name: 'User:',
+          value: `${messageDelete.author.tag} [${messageDelete.author.id}]` 
+        },
+        {
+          name: 'Message:',
+          value: `\`\`\`\n${messageText}\n\`\`\``
+        }
+      );
+
+  client.channels.cache
+    .get("836366149486641172")
+    .send(deleteEmbed);
+});
+
+client.on('messageUpdate', function(oldMessage, newMessage){
+  if (newMessage.bot || newMessage.author.tag === "GitHub#0000" || newMessage.author.tag === "Rythm#3722") return;
+
+  var oldMessageText;
+  if (oldMessage.content.length > 475) {
+    oldMessageText = `${oldMessage.content.substring(0, 475)}...`;
+  } else {
+    oldMessageText = oldMessage.content;
+  }
+
+  var newMessageText;
+  if (newMessage.content.length > 475) {
+    newMessageText = `${newMessage.content.substring(0, 475)}...`;
+  } else {
+    newMessageText = newMessage.content;
+  }
+
+  let editEmbed = new Discord.MessageEmbed()
+    .setColor('#d9990f')
+    .setTitle('Message Deleted')
+    .setURL(`${newMessage.url}`)
+    .setTimestamp()
+    .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png')
+    .addFields(
+        { 
+          name: 'Channel:', 
+          value: `${newMessage.guild.channels.cache.get(`${newMessage.channel.id}`).toString()}`
+        },
+        { 
+          name: 'User:',
+          value: `${newMessage.author.tag} [${newMessage.author.id}]` 
+        },
+        {
+          name: 'Old Message:',
+          value: `\`\`\`\n${oldMessageText}\n\`\`\``
+        },
+        {
+          name: 'New Message:',
+          value: `\`\`\`\n${newMessageText}\n\`\`\``
+        }
+      );
+
+  client.channels.cache
+    .get("836366149486641172")
+    .send(editEmbed);
+});
+
+client.on("guildMemberAdd", function(member){
+  console.info(`New member: ${member.tag}`);
+
+  var joinMessages = [
+      `Whalecum, ${member}!`,
+      `Com'on over and mine some Graphene, ${member}!`,
+      `Welcome to Graphene, ${member} ||we take bribes. At our patreon.||`, //TODO: add link to patreon
+      `Welcome ${member} this discord has great quotes, just like this one:\n> Come support our patreon and remeber, by paying us, you're just paying yourself!\n-- Techyguy 2021`
+    ]
+
+  client.channels.cache
+    .get("825457139467550801")
+    .send(joinMessages[Math.floor(Math.random() * joinMessages.length)]);
+});
+
 //////////////////////////////////////////////COOLDOWN//////////////////////////////////////////////
 
 function cooldown(user) {
