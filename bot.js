@@ -109,7 +109,9 @@ function botstats(message) {
   return message.channel.send(botstats);
 }
 
+
 ////////////////////////////////////////////////LOGS////////////////////////////////////////////////
+
 
 client.on("messageDelete", function(messageDelete){
   if (messageDelete.bot || messageDelete.author.tag === "GitHub#0000" || messageDelete.author.tag === "Rythm#3722") return;
