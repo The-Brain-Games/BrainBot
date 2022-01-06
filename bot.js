@@ -9,6 +9,11 @@ client.commands = new Discord.Collection();
 
 const TOKEN = process.env.TOKEN;
 
+// utils init
+const SingleMessageResponse = require('./utils/sResponse.js')
+
+// commands init
+
 fs.readdir("./commands/", (err, files) => {
 
     if(err) console.log(err);
@@ -39,8 +44,7 @@ let commandsRun = 0;
 client.on('message', message => {
   // General checks:
   if(message.author.bot || message.channel.type === 'dm') return;
-  if(message.content.toLowerCase() == "hi" || message.content.toLowerCase() == "hello") return message.channel.send("https://www.nohello.com/");
-  if(message.content == "!d bump") return message.react('❤');
+  if (SingleMessageResponse.run(message)) return;
 
   if (talkedRecently.has(message.author.id)) {
     //bot is on cooldown

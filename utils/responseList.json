@@ -1,0 +1,12 @@
+{
+    "hello" : {
+        "text" : "https://www.nohello.com/"
+    },
+    "hi" : {
+        "text" : "https://www.nohello.com/"
+    },
+
+    "!d bump" : {
+        "reaction" : "❤"
+    }
+}
