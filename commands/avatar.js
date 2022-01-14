@@ -6,7 +6,9 @@ module.exports.run = async (client, disbut, message, args) => {
         .setColor('#ba365b')
         .setAuthor(user.username)
         .setTimestamp()
-        .setImage(user.avatarURL)
+        .setImage(
+            `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256`
+        )
         .setFooter('BrainBot', 'https://i.imgur.com/AkAd7Qo.png');
     return message.channel.send(avatarEmbed);
 };

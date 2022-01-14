@@ -41,12 +41,13 @@ client.on('ready', () => {
 
 const talkedRecently = new Set();
 let commandsRun = 0;
+let prefix = ">";
 client.on('message', message => {
   // General checks:
   if(message.author.bot || message.channel.type === 'dm') return;
   //if (SingleMessageResponse.run(message)) return;
 
-  if (talkedRecently.has(message.author.id)) {
+  if (talkedRecently.has(message.author.id) && message.content.substring(0,1) == prefix) {
     //bot is on cooldown
     console.warn("Bot is on cooldown.")
     let cooldownEmbed = new Discord.MessageEmbed()
@@ -61,7 +62,6 @@ client.on('message', message => {
     let command = content[0].toLowerCase();
     //console.log(`running command ${command}`)
     let args = content.slice(1);
-    let prefix = ">";
 
     if (command.substring(0,1) != prefix) return;
 
