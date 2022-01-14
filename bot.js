@@ -45,7 +45,7 @@ let prefix = ">";
 client.on('message', message => {
   // General checks:
   if(message.author.bot || message.channel.type === 'dm') return;
-  if (await SingleMessageResponse.run(message)) return;
+  SingleMessageResponse.run(message);
 
   if (talkedRecently.has(message.author.id) && message.content.substring(0,1) == prefix) {
     //bot is on cooldown
