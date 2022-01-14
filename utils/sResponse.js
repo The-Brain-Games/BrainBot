@@ -5,7 +5,7 @@ const ResponseList = require('./responseList.json');
 module.exports.run = async (message) => {
     const content = message.content.normalize().toLowerCase();
 
-    if (ResponseList.content !== undefined) {
+    if (ResponseList[content] !== undefined) {
         if ("reaction" in ResponseList[content]) message.react(ResponseList[content].reaction);
 
         if ("text" in ResponseList[content]) message.channel.send(ResponseList[content].text);
