@@ -44,7 +44,7 @@ let commandsRun = 0;
 client.on('message', message => {
   // General checks:
   if(message.author.bot || message.channel.type === 'dm') return;
-  if (SingleMessageResponse.run(message)) return;
+  //if (SingleMessageResponse.run(message)) return;
 
   if (talkedRecently.has(message.author.id)) {
     //bot is on cooldown
