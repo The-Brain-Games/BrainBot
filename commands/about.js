@@ -12,16 +12,16 @@ module.exports.run = async (client, disbut, message, args) => {
   let button = new disbut.MessageButton()
     .setLabel("Read More!")
     .setStyle("url")
-    .setURL("https://realbraingames.com/#/about-us")
+    .setURL("https://realbraingames.com/#/about-us");
 
   let button2 = new disbut.MessageButton()
     .setLabel("Donate")
     .setStyle("url")
-    .setURL("https://www.patreon.com/thebraingames")
+    .setURL("https://www.patreon.com/thebraingames");
 
   let buttonRow = new disbut.MessageActionRow()
     .addComponent(button)
-    .addComponent(button2)
+    .addComponent(button2);
 
   return message.channel.send({
     component: buttonRow,
